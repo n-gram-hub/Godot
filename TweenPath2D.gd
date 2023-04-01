@@ -1,3 +1,5 @@
+# move sprite over Path2D, tweening the progress_ratio property
+
 func get_progress_at_point(point_coords:Vector2) -> float:
 	
 	var baked_points = curve.get_baked_points()
