@@ -8,7 +8,7 @@ func get_progress_at_point(point_coords:Vector2) -> float:
 	var point_index = baked_points.find(point_coords)
 	
 	if point_index == -1:
-		return float(-1)
+		return NAN
 	
 	for i in range(0, point_index):
 		
@@ -21,14 +21,19 @@ func get_progress_at_point(point_coords:Vector2) -> float:
 	
 	return baked_length
   
- # usage
+# usage
  
-# vector should not be hardcoded, anyway
-var point_coords = Vector2(883.436, 568)
-var dist = get_progress_at_point(point_coords)
-# test for -1.0 before using
-var baked_length = curve.get_baked_length()
-var ratio = dist/baked_length
+# vector should not be hardcoded, anyway (it should come from a set of points of the path)
 
-var tween = get_tree().create_tween()
-tween.tween_property($"../Path2D/PathFollow2D", "progress_ratio", ratio, 2.0)
+var point_coords = Vector2(883.436, 568)
+
+var dist = get_progress_at_point(point_coords)
+
+if not is_nan(dist):
+
+	var baked_length = curve.get_baked_length()
+
+	var ratio = dist/baked_length
+
+	var tween = get_tree().create_tween()
+	tween.tween_property($"../Path2D/PathFollow2D", "progress_ratio", ratio, 2.0)
