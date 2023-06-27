@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxot5xys5i16h"]
+
+[ext_resource type="Script" path="res://Hurt_cmp.gd" id="1_nus1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsm0p"]
+
+[node name="Hurt_cmp" type="Area2D"]
+script = ExtResource("1_nus1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsm0p")

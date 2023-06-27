@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3r3qt72fhy2a"]
+
+[ext_resource type="Script" path="res://Health_cmp.gd" id="1_nwtsv"]
+
+[node name="Health_cmp" type="Node2D"]
+script = ExtResource("1_nwtsv")

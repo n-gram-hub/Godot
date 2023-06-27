@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6kvtfocw6r4g"]
+
+[ext_resource type="Script" path="res://Cmp_root.gd" id="1_xuop8"]
+[ext_resource type="Script" path="res://hurtSetter_btn.gd" id="2_a3lu0"]
+[ext_resource type="PackedScene" uid="uid://c3r3qt72fhy2a" path="res://health_cmp.tscn" id="3_wb20f"]
+[ext_resource type="PackedScene" uid="uid://dxot5xys5i16h" path="res://hurt_cmp.tscn" id="4_anlox"]
+
+[node name="SampleNode" type="Node2D"]
+script = ExtResource("1_xuop8")
+
+[node name="hurtSetter_btn" type="Button" parent="."]
+offset_left = 359.0
+offset_top = 104.0
+offset_right = 404.0
+offset_bottom = 135.0
+text = "Set hurt"
+script = ExtResource("2_a3lu0")
+
+[node name="Health_cmp" parent="." instance=ExtResource("3_wb20f")]
+
+[node name="Hurt_cmp" parent="." node_paths=PackedStringArray("health_compo") instance=ExtResource("4_anlox")]
+health_compo = NodePath("../Health_cmp")
+
+[connection signal="pressed" from="hurtSetter_btn" to="hurtSetter_btn" method="_on_pressed"]
+[connection signal="health_changed" from="Health_cmp" to="." method="_on_health_cmp_health_changed"]
